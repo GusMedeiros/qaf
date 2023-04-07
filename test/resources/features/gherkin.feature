@@ -25,10 +25,21 @@ Scenario Outline: Search Keyword
  Then it should have "<searchResult>" in search results
 
 Examples:
- | searchKey | searchResult | number |
- | QMetry & QAF | QMetry Automation Framework | 10 |
- | Selenium ISFW | Infostretch Test Automation Framework | 20 |
-
+ | searchKey            | searchResult                             | number |
+ | QMetry QAF           | QMetry Automation Framework              | 5      |
+ | Selenium ISFW        | Infostretch Test Automation Framework    | 10     |
+ | Selenium ISFW        | Infostretch, Test Automation Framework   | 10     |
+ | Selenium ISFW        | "Infostretch, Test Automation Framework" | 10     |
+ | "Selenium ISFW"      | Chirag's Test Automation Framework       | 10     |
+ | "Selenium ISFW"      | "Chirag's Test Automation Framework"     | 10     |
+ | "Selenium ISFW"      | My "Test Automation Framework"           | 10     |
+ | "Selenium ISFW"      | My 'Test Automation Framework'           | 10     |
+ | "Selenium ISFW"      | "My ""Test Automation Framework"""       | 10     |
+ | "Empty String value" |                                          | 0      |
+ | @#$%^&*()=+[]        | The history of "&"                       | 15     |
+ | Empty String value   |                                          | 0      |
+ | "'""'"               | www.google.com                           | 30     |
+ | space                | www.google.com                           | 30     |
 Scenario Outline: Search Keyword using data from file
  Given I am on Google Search Page
  When I search for "<searchKey>"
@@ -53,17 +64,21 @@ Scenario Outline: Search Keyword-2
  Then it should have "<searchResult>" in search results
 
 Examples:
- | searchKey | searchResult | number |
- | QMetry QAF | QMetry Automation Framework | 5 |
- | Selenium ISFW | Infostretch Test Automation Framework | 10 |
- | Selenium ISFW | Infostretch, Test Automation Framework | 10 |
- | Selenium ISFW | "Infostretch, Test Automation Framework" | 10 |
- | "Selenium ISFW" | Chirag's Test Automation Framework | 10 |
- | "Selenium ISFW" | "Chirag's Test Automation Framework" | 10 |
- | "Selenium ISFW" | My "Test Automation Framework" | 10 |
- | "Selenium ISFW" | My 'Test Automation Framework' | 10 |
- | "Selenium ISFW" | "My ""Test Automation Framework""" | 10 |
- | "Empty String value" |  | 0 |
+ | searchKey            | searchResult                             | number |
+ | QMetry QAF           | QMetry Automation Framework              | 5      |
+ | Selenium ISFW        | Infostretch Test Automation Framework    | 10     |
+ | Selenium ISFW        | Infostretch, Test Automation Framework   | 10     |
+ | Selenium ISFW        | "Infostretch, Test Automation Framework" | 10     |
+ | "Selenium ISFW"      | Chirag's Test Automation Framework       | 10     |
+ | "Selenium ISFW"      | "Chirag's Test Automation Framework"     | 10     |
+ | "Selenium ISFW"      | My "Test Automation Framework"           | 10     |
+ | "Selenium ISFW"      | My 'Test Automation Framework'           | 10     |
+ | "Selenium ISFW"      | "My ""Test Automation Framework"""       | 10     |
+ | "Empty String value" |                                          | 0      |
+ | @#$%^&*()=+[]        | The history of "&"                       | 15     |
+ | Empty String value   |                                          | 0      |
+ | "'""'"               | www.google.com                           | 30     |
+ | space                | www.google.com                           | 30     |
  # empty/null for numeric data worked fine with QAF step implementation with Integer type 
 # | "Empty numeric value" |  |  |
  
